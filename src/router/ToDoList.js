@@ -1,9 +1,13 @@
 var express = require('express')
 var router = express.Router()
 
+var Todo = require('../../models/todoList')
+
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  res.send('Express RESTFUL API')
+router.get('/', async (req, res) => {
+  var todo = await Todo.find()
+
+  res.json(todo)
 })
 
 module.exports = router
