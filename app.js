@@ -12,8 +12,9 @@ app.use(bodyParser.urlencoded({'extended': 'false'}))
 app.use(express.static(path.join(__dirname, 'dist')))
 app.use('/ToDoLists', express.static(path.join(__dirname, 'dist')))
 app.use('/ToDoList', ToDoList)
-app.engine('html', require('ejs').render)
-app.set('view engine', 'html')
+
+// app.engine('html', require('ejs').render)
+// app.set('view engine', 'html')
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

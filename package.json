@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run build && node ./bin/www",
+    "start": "npm run build && nodemon ./bin/www",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
@@ -17,6 +17,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "morgan": "^1.9.1",
+    "nodemon": "^1.18.9",
     "serve-favicon": "^2.5.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
