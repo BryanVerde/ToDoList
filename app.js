@@ -5,19 +5,26 @@ var logger = require('morgan')
 var bodyParser = require('body-parser')
 var ToDoList = require('./src/router/ToDoList')
 var app = express()
-var MongoClient = require('mongodb').MongoClient
+var mongoose = require('mongoose')
+// var MongoClient = require('mongodb').MongoClient
 
 // replace the uri string with your connection string.
-var uri = 'mongodb+srv://m001-student:' + process.env.Mongo_Atlas_PW + '@cluster0-tvykb.mongodb.net/ToDoList?retryWrites=true&&authSource=admin'
+var uri = 'mongodb+srv://Test:' + process.env.Mongo_Atlas_PW + '@cluster0-tvykb.mongodb.net/ToDoList?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true'
 
-var client = new MongoClient(uri, {useNewUrlParser: true})
+var uril = 'mongodb://Test:' + process.env.Mongo_Atlas_PW + '@cluster0-shard-00-01-tvykb.mongodb.net:27017/ToDoList?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true'
+// var client = new MongoClient(uri, {useNewUrlParser: true})
 
-client.connect(err => {
+
+mongoose.connect(uri, { useNewUrlParser: true })
+  .then(db => console.log('DB connected'))
+  .catch(err => console.error(err))
+
+/*client.connect(err => {
   var collection = client.db('ToDoList').collection('todolist')
-  // console.log(collection.find().pretty)
+  console.error(err)
 // perform actions on the collection object
   client.close()
-})
+})*/
 
 app.use(logger('dev'))
 app.use(bodyParser.json())

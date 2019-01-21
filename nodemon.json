@@ -1,5 +1,5 @@
 {
     "env":{
-        "Mongo_Atlas_PW": "m001_mongodb_basics"
+        "Mongo_Atlas_PW": "Test"
     }
 }

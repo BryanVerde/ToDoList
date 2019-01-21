@@ -3,34 +3,24 @@ var router = express.Router()
 
 var Todo = require('../../models/todoList')
 
-/* GET home page. */
+// GET home page. 
 router.get('/', async (req, res) => {
-  console.log('it got in')
-  Todo.find()
   var todo = await Todo.find()
-  console.log(todo + 'nothing')
   res.json(todo)
 })
 
+/*router.get('/', function (req, res, next) {
+  Todo.find(function (err, todos) {
+    if (err) return next(err)
+    res.json(todos)
+  })
+})*/
+
 router.post('/', async (req, res) => {
   var todo = new Todo(req.body)
-  console.log(todo)
-  await todo.save(function (err, result) {
-    if (err) throw err
-    if (result) {
-      res.json(result)
-    }
-  })
-  /*.then(item => {
-    res.send("item saved to database")
-    })
-  .catch(err => {
-    res.status(400).send("unable to save to database")
-  })*/
-  // console.log('2')
-  // res.json({
-  //  status: 'todo save'
-  // })
+   res.json({
+    status: 'todo save'
+   })
 })
 
 module.exports = router
