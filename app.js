@@ -6,25 +6,15 @@ var bodyParser = require('body-parser')
 var ToDoList = require('./src/router/ToDoList')
 var app = express()
 var mongoose = require('mongoose')
-// var MongoClient = require('mongodb').MongoClient
 
 // replace the uri string with your connection string.
 var uri = 'mongodb+srv://Test:' + process.env.Mongo_Atlas_PW + '@cluster0-tvykb.mongodb.net/ToDoList?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true'
 
 var uril = 'mongodb://Test:' + process.env.Mongo_Atlas_PW + '@cluster0-shard-00-01-tvykb.mongodb.net:27017/ToDoList?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true'
-// var client = new MongoClient(uri, {useNewUrlParser: true})
-
 
 mongoose.connect(uri, { useNewUrlParser: true })
   .then(db => console.log('DB connected'))
   .catch(err => console.error(err))
-
-/*client.connect(err => {
-  var collection = client.db('ToDoList').collection('todolist')
-  console.error(err)
-// perform actions on the collection object
-  client.close()
-})*/
 
 app.use(logger('dev'))
 app.use(bodyParser.json())

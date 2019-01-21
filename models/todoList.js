@@ -3,7 +3,8 @@ var { Schema } = mongoose
 
 var ListSchema = new Schema({
   Title: String,
-  Description: String
+  Description: String,
+  Fecha: String
 })
 
 // console.log(ListSchema)
