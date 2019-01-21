@@ -1,9 +1,12 @@
-var mongoose = require('mongoose')
-var Schema = mongoose.Schema
+var client = require('mongoose')
+var { Schema } = client
 
 var ListSchema = new Schema({
   Title: String,
   Description: String
+},{
+  collection: 'todolist'
 })
 
-module.exports = mongoose.model('todoList', ListSchema)
+console.log('schema is this one:' + ListSchema)
+module.exports = client.model('todolist', ListSchema)
